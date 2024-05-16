@@ -373,78 +373,219 @@ any links that you are not going to use.
  --></tbody></table><p>
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
-      </section><section id="setup"><p>FIXME: Setup instructions live in this document. Please specify the
-tools and the data sets the Learner needs to have installed.</p>
-<section id="data-sets"><h2 class="section-heading">Data Sets<a class="anchor" aria-label="anchor" href="#data-sets"></a>
-</h2>
-<hr class="half-width"><!--
-FIXME: place any data you want learners to use in `episodes/data` and then use
-       a relative link ( [data zip file](data/lesson-data.zip) ) to provide a
-       link to it, replacing the example.com link.
---><p>Download the <a href="https://example.com/FIXME" class="external-link">data zip file</a>
-and unzip it to your Desktop</p>
-</section><section id="software-setup"><h2 class="section-heading">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a>
-</h2>
-<hr class="half-width"><div id="details" class="callout discussion">
-<div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
+      </section><section id="setup"><div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div class="accordion-body">
+<p>Setup instructions live in this document. Please specify the tools
+and the data sets the learner needs to have installed. If you want to
+hide different setup instructions, you can use a <code>solution</code>
+tag.</p>
 </div>
-<div id="details" class="callout-inner">
-<h3 class="callout-title">Details<a class="anchor" aria-label="anchor" href="#details"></a>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="install-r-and-rstudio">Install R and RStudio<a class="anchor" aria-label="anchor" href="#install-r-and-rstudio"></a></h3>
+<p>R and RStudio are two separate pieces of software:</p>
+<ul><li>
+<strong>R</strong> is a programming language and software used to
+run code written in R.</li>
+<li>
+<strong>RStudio</strong> is an integrated development environment
+(IDE) that makes using R easier. In this course we use RStudio to
+interact with R.</li>
+</ul><p>If you don’t already have R and RStudio installed, follow the
+instructions for your operating system below. You have to install R
+before you install RStudio.</p>
+<p><br></p>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">For Windows</h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
+<ul><li>Download R from the <a href="https://cran.r-project.org/bin/windows/base/release.htm" class="external-link">CRAN
+website</a>.</li>
+<li>Run the <code>.exe</code> file that was just downloaded</li>
+<li>Go to the <a href="https://www.rstudio.com/products/rstudio/download/#download" class="external-link">RStudio
+download page</a>
+</li>
+<li>Under <em>Installers</em> select <strong>RStudio x.yy.zzz - Windows
+Vista/7/8/10</strong> (where x, y, and z represent version numbers)</li>
+<li>Double click the file to install it</li>
+<li>Once it’s installed, open RStudio to make sure it works and you
+don’t get any error messages.</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2">For MacOS</h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div class="accordion-body">
+<ul><li>Download R from the <a href="https://cran.r-project.org/bin/macosx/" class="external-link">CRAN website</a>.</li>
+<li>Select the <code>.pkg</code> file for the latest R version</li>
+<li>Double click on the downloaded file to install R</li>
+<li>It is also a good idea to install <a href="https://www.xquartz.org/" class="external-link">XQuartz</a> (needed by some
+packages)</li>
+<li>Go to the <a href="https://www.rstudio.com/products/rstudio/download/#download" class="external-link">RStudio
+download page</a>
+</li>
+<li>Under <em>Installers</em> select <strong>RStudio x.yy.zzz - Mac OS X
+10.6+ (64-bit)</strong> (where x, y, and z represent version
+numbers)</li>
+<li>Double click the file to install RStudio</li>
+<li>Once it’s installed, open RStudio to make sure it works and you
+don’t get any error messages.</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3">For Linux</h4>
+</button>
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div class="accordion-body">
+<ul><li>Download R from the <a href="https://cran.r-project.org/bin/macosx/" class="external-link">CRAN website</a>.</li>
+<li>Select the <code>.pkg</code> file for the latest R version</li>
+<li>Double click on the downloaded file to install R</li>
+<li>It is also a good idea to install <a href="https://www.xquartz.org/" class="external-link">XQuartz</a> (needed by some
+packages)</li>
+<li>Go to the <a href="https://www.rstudio.com/products/rstudio/download/#download" class="external-link">RStudio
+download page</a>
+</li>
+<li>Under <em>Installers</em> select <strong>RStudio x.yy.zzz - Mac OS X
+10.6+ (64-bit)</strong> (where x, y, and z represent version
+numbers)</li>
+<li>Double click the file to install RStudio</li>
+<li>Once it’s installed, open RStudio to make sure it works and you
+don’t get any error messages.</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="update-r-and-rstudio">Update R and RStudio<a class="anchor" aria-label="anchor" href="#update-r-and-rstudio"></a></h3>
+<p>If you already have R and RStudio installed, first check if your R
+version is up to date:</p>
+<ul><li>When you open RStudio your R version will be printed in the console
+on the bottom left. Alternatively, you can type
+<code>sessionInfo()</code> into the console. If your R version is 4.0.0
+or later, you don’t need to update R for this lesson. If your version of
+R is older than that, download and install the latest version of R from
+the R project website <a href="https://cran.r-project.org/bin/windows/base/" class="external-link">for Windows</a>, <a href="https://cran.r-project.org/bin/macosx/" class="external-link">for MacOS</a>, or <a href="https://cran.r-project.org/bin/linux/" class="external-link">for Linux</a>
+</li>
+<li>It is not necessary to remove old versions of R from your system,
+but if you wish to do so you can check <a href="https://cran.r-project.org/bin/windows/base/rw-FAQ.html#How-do-I-UNinstall-R_003f" class="external-link">How
+do I uninstall R?</a>
+</li>
+<li>After installing a new version of R, you will have to reinstall all
+your packages with the new version. For Windows, there is a package
+called <code>installr</code> that can help you with upgrading your R
+version and migrate your package library. A similar package called
+<code>pacman</code> can help with updating R packages across To update
+RStudio to the latest version, open RStudio and click on
+<code>Help &gt; Check for Updates</code>. If a new version is available
+follow the instruction on screen. By default, RStudio will also
+automatically notify you of new versions every once in a while.</li>
+</ul><div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
 </h3>
 <div class="callout-content">
-<p>Setup for different systems can be presented in dropdown menus via a
-<code>spoiler</code> tag. They will join to this discussion block, so
-you can give a general overview of the software used in this lesson here
-and fill out the individual operating systems (and potentially add more,
-e.g. online setup) in the solutions blocks.</p>
-</div>
-</div>
-</div>
-<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
-  <h3 class="accordion-header" id="headingSpoiler1">
-<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Windows</h3>
-</button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
-<div class="accordion-body">
-<p>Use PuTTY</p>
+<p>The changes introduced by new R versions are usually
+backwards-compatible. That is, your old code should still work after
+updating your R version. However, if breaking changes happen, it is
+useful to know that you can have multiple versions of R installed in
+parallel and that you can switch between them in RStudio by going to
+<code>Tools &gt; Global Options &gt; General &gt; Basic</code>.</p>
+<p>While this may sound scary, it is <strong>far more common</strong> to
+run into issues due to using out-of-date versions of R or R packages.
+Keeping up with the latest versions of R, RStudio, and any packages you
+regularly use is a good practice.</p>
 </div>
 </div>
 </div>
 </div>
-<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
-  <h3 class="accordion-header" id="headingSpoiler2">
-<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>MacOS</h3>
-</button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
-<div class="accordion-body">
-<p>Use Terminal.app</p>
+<div class="section level3">
+<h3 id="install-required-r-packages">Install required R packages<a class="anchor" aria-label="anchor" href="#install-required-r-packages"></a></h3>
+<p>During the course we will need a number of R packages. Packages
+contain useful R code written by other people. We will use the packages
+<code>ratdat</code>, <code>reprex</code>, and
+<code>tidyverse</code>.</p>
+<p>To try to install these packages, open RStudio and copy and paste the
+following command into the console window (look for a blinking cursor on
+the bottom left), then press the <kbd>Enter</kbd> (Windows and Linux) or
+<kbd>Return</kbd> (MacOS) to execute the command.</p>
+<p><code>{r} install.packages(c("ratdat", "reprex", "tidyverse"))</code></p>
+<p>Alternatively, you can install the packages using RStudio’s graphical
+user interface by going to <code>Tools &gt; Install Packages</code> and
+typing the names of the packages separated by a comma.</p>
+<p>R tries to download and install the packages on your machine.</p>
+<p>When the installation has finished, you can try to load the packages
+by pasting the following code into the console:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">ratdat</span><span class="op">)</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">reprex</span><span class="op">)</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span></code></pre>
 </div>
+<p>If you do not see an error like
+<code>there is no package called ‘...’</code> you are good to go!</p>
 </div>
+<div class="section level3">
+<h3 id="updating-r-packages">Updating R packages<a class="anchor" aria-label="anchor" href="#updating-r-packages"></a></h3>
+<p>Generally, it is recommended to keep your R version and all packages
+up to date, because new versions bring improvements and important
+bugfixes. To update the packages that you have installed, click
+<code>Update</code> in the <code>Packages</code> tab in the bottom right
+panel of RStudio, or go to
+<code>Tools &gt; Check for Package Updates...</code></p>
+<p>You should update <strong>all of the packages</strong> required for
+the lesson, even if you installed them relatively recently.</p>
+<p>Sometimes, package updates introduce changes that break your old
+code, which can be very frustrating. To avoid this problem, you can use
+a package called <code>renv</code>. It locks the package versions you
+have used for a given project and makes it straightforward to reinstall
+those exact package version in a new environment, for example after
+updating your R version or on another computer. However, the details are
+outside of the scope of this lesson.</p>
 </div>
-</div>
-<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
-  <h3 class="accordion-header" id="headingSpoiler3">
-<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Linux</h3>
-</button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
-<div class="accordion-body">
-<p>Use Terminal</p>
-</div>
-</div>
-</div>
-</div>
-<!-- 
+<div class="section level3">
+<h3 id="download-the-data">Download the data<a class="anchor" aria-label="anchor" href="#download-the-data"></a></h3>
+<p>We will download the data directly from R during the lessons.
+However, if you are expecting problems with the network, it may be
+better to download the data beforehand and store it on your machine.</p>
+<p>The data files for the lesson can be downloaded manually:</p>
+<ul><li>
+<a href="../data/cleaned/surveys_complete_77_89.csv">cleaned data</a>
+and</li>
+<li>
+<a href="../data/new_data.zip">zip file of raw data</a>.</li>
+</ul><!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
- -->
-</section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
+ --></div>
+
+
+      </section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="../instructor/1-intro-reproducible-examples.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
