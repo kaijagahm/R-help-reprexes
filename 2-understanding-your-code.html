@@ -294,7 +294,7 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>To do</li>
+<ul><li>TODO</li>
 </ul></div>
 </div>
 </div>
@@ -302,8 +302,63 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>To do</li>
+<ul><li>Describe in general terms what you want your code to do, and what it
+is currently doing.</li>
+<li>Break down your code into conceptual steps (pseudocode, or a
+narrative of what you’re doing)</li>
+<li>Identify relevant variables/objects</li>
 </ul></div>
+</div>
+</div>
+</div>
+</div>
+<div id="order-the-conceptual-steps-of-code" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="order-the-conceptual-steps-of-code" class="callout-inner">
+<h3 class="callout-title">Order the conceptual steps of code<a class="anchor" aria-label="anchor" href="#order-the-conceptual-steps-of-code"></a>
+</h3>
+<div class="callout-content">
+<p>Here is a block of code that creates an example data
+visualization.</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">dplyr</span><span class="op">)</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span></span>
+<span><span class="va">fuel_efficient</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">mpg</span> <span class="op">&gt;</span> <span class="fl">30</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">select</span><span class="op">(</span><span class="va">hp</span>, <span class="va">mpg</span><span class="op">)</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">fuel_efficient</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">hp</span>, y <span class="op">=</span> <span class="va">mpg</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">p</span></span></code></pre>
+</div>
+<p>Reorder the following conceptual steps so that they accurately
+reflect what this code is trying to accomplish.</p>
+<pre><code>A. Set up a visualization that will show the relationship between horsepower and fuel efficiency
+B. Choose only the most fuel efficient cars
+C. Display the plot that was just created
+D. Load necessary packages
+E. Simplify the dataset to show fewer columns
+F. Add points to the initial plot</code></pre>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
+<pre><code>D. Load necessary packages
+B. Choose only the most fuel efficient cars
+E. Simplify the dataset to show fewer columns
+A. Set up a visualization that will show the relationship between horsepower and fuel efficiency
+F. Add points to the initial plot
+C. Display the plot that was just created</code></pre>
 </div>
 </div>
 </div>
