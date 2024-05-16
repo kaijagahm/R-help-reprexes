@@ -532,7 +532,7 @@ requires 1</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution Title</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Error in length(5, 6, 7) : 3 arguments passed to ‘length’ which
@@ -569,15 +569,14 @@ requires 1</li>
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
+<p>After completing this episode, participants should be able to…</p>
 <ul>
 <li>Describe a minimal reproducible dataset</li>
-<li>List the requirements for a minimal reproducible dataset</li>
 <li>Identify the minimum objects required to reproduce your coding
 problem</li>
 <li>Create a data frame from scratch (“dummy data”)</li>
 <li>List readily available datasets and how to access them</li>
 <li>Create a sample dataset from a subset of your data</li>
-<li>(optional) Evaluate when to use which type of dataset</li>
 <li>(optional) Include NAs or NULL values in your dataset</li>
 <li>List ways to share a sample dataset</li>
 </ul>
@@ -614,14 +613,17 @@ editing, why? Edit as necessary.</p>
 <div class="accordion-body">
 <p>Here is just one example for how each dataset could be improved.</p>
 <ol style="list-style-type: upper-alpha">
-<li>do not use data from your computer unless you are attaching the data
+<li>Not reproducible.<br>
+Do not use data from your computer unless you are attaching the data
 file. You can reproduce a subset of that data from scratch (dummy data).
 For example:</li>
-<li>This dataset is already reproducible and needs no editing</li>
-<li>add <code><a href="https://dplyr.tidyverse.org" class="external-link">library(dplyr)</a></code> or
-<code>dplyr::function()</code>
+<li>Minimal and reproducible!<br>
+This dataset is already reproducible and needs no editing</li>
+<li>Not reproducible.<br>
+Add <code><a href="https://dplyr.tidyverse.org" class="external-link">library(dplyr)</a></code> or <code>dplyr::function()</code>
 </li>
-<li>Reduce the length of this dataset by…</li>
+<li>Not minimal.<br>
+Reduce the length of this dataset by…</li>
 </ol>
 </div>
 </div>
@@ -811,7 +813,7 @@ reinforce the objectives.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Output</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -840,7 +842,7 @@ challenge blocks?<a class="anchor" aria-label="anchor" href="#challenge-2-how-do
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
