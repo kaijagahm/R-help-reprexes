@@ -340,7 +340,7 @@
 with other things?</li>
 <li>Why is a minimal reproducible example an important tool for getting
 help in R?</li>
-<li>What tools can help us create and share reproducible examples?</li>
+<li>What will we be learning in the rest of the course?</li>
 </ul>
 </div>
 </div>
@@ -352,13 +352,102 @@ help in R?</li>
 <ul>
 <li>Recognize what it takes to debug someone else’s code.</li>
 <li>Define a minimal reproducible example.</li>
-<li>Explain what the {reprex} package does and what it is used for.</li>
+<li>Describe the general workflow that we will cover in the rest of this
+lesson.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 </div>
+<div class="section level4">
+<h4 id="welcome-and-introductions">Welcome and introductions<a class="anchor" aria-label="anchor" href="#welcome-and-introductions"></a>
+</h4>
+<ul>
+<li><p>Welcome to “RRRR, I’m Stuck!” We’re glad you’re here! Let’s first
+take care of a few setup steps. You should have all followed the setup
+instructions on the <a href="kaijagahm.github.io/R-help-reprexes/">workshop website</a>, and
+you should have both R and RStudio installed.</p></li>
+<li><p>You should also have the following packages installed:
+{<strong>reprex</strong>}, {<strong>ratdat</strong>},
+{<strong>tidyverse</strong>}.</p></li>
+<li><p>We have a range of levels of experience here. This workshop
+assumes that you are researcher in ecology/biology who has some prior
+experience working with R in RStudio.</p></li>
+<li><p>We won’t be spending a lot of time going over [concepts]. Here’s
+a handy reference guide to lessen some of the cognitive load… [to be
+continued.]</p></li>
+<li><p>You don’t have to be an expert. But we also know that even more
+experienced R coders might be less familiar with how to get unstuck, so
+we hope this workshop will be useful to you too.</p></li>
+</ul>
+<div id="think-pair-share" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div id="think-pair-share" class="callout-inner">
+<h3 class="callout-title">Think, pair, share<a class="anchor" aria-label="anchor" href="#think-pair-share"></a>
+</h3>
+<div class="callout-content">
+<p>When you’re coding in R and you get stuck, what are some things that
+you do to get help or get unstuck?</p>
+</div>
+</div>
+</div>
+<div id="think-pair-share-1" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div id="think-pair-share-1" class="callout-inner">
+<h3 class="callout-title">Think, pair, share<a class="anchor" aria-label="anchor" href="#think-pair-share-1"></a>
+</h3>
+<div class="callout-content">
+<p>Think about a time that you helped someone else with their code. What
+information did you need to know in order to help? (If you have never
+helped someone else with their code, think about a time that someone
+helped you–what information did they need to know in order to help?)</p>
+</div>
+</div>
+</div>
+<div id="minimal-reproducible-example-aka-reprex" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="minimal-reproducible-example-aka-reprex" class="callout-inner">
+<h3 class="callout-title">Minimal Reproducible Example (aka
+“reprex”)<a class="anchor" aria-label="anchor" href="#minimal-reproducible-example-aka-reprex"></a>
+</h3>
+<div class="callout-content">
+<pre><code>"Your code examples should be...
+Minimal: Use as little code as possible that still produces the same problem
+Complete: Provide all parts someone else needs to reproduce your problem in the question itself
+Reproducible: Test the code you're about to provide to make sure it reproduces the problem" - [StackOverflow](https://stackoverflow.com/help/minimal-reproducible-example)</code></pre>
+<pre><code>"The goal of a reprex is to package your problematic code in such a way that other people can run it and feel your pain. Then, hopefully, they can provide a solution and put you out of your misery." - [Get help! (Tidyverse)](https://www.tidyverse.org/help/)</code></pre>
+<pre><code>"The habit of making little, rigorous, self-contained examples also has the great side effect of making you think more clearly about your programming problems." - [Jenny Bryan](https://posit.co/resources/videos/help-me-help-you-creating-reproducible-examples/)</code></pre>
+</div>
+</div>
+</div>
+<p>These steps might seem simple, but they can be challenging to put
+into practice. In this lesson, we will be guiding you through the
+process of creating a minimal reproducible example. By the end, you will
+have a workflow to follow next time you get stuck.</p>
+</div>
+<section id="overview-of-this-lesson"><h2 class="section-heading">Overview of this lesson<a class="anchor" aria-label="anchor" href="#overview-of-this-lesson"></a>
+</h2>
+<hr class="half-width">
+<p>[Visual: screenshot or diagram of someone else’s educational resource
+where they explain what a minimal reproducible example is (with
+appropriate credit given of course)] –&gt; use this to motivate how
+we’re going to be going through each step of that in this lesson.</p>
+<p>[Visual: diagram of the general process, with questions along the
+way]–to draw ourselves ### Understand your code ### Apply “first aid”
+debugging strategies ### Create minimal reproducible data ### Simplify
+your code and make it minimal ### Prepare to share your reproducible
+example with others.</p>
+<hr>
+<p><strong>Motivating examples</strong></p>
+<p>[Screenshots of real requests for help]</p>
+<hr>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -380,7 +469,12 @@ reproducible.</li>
 </ul>
 </div>
 </div>
-</div></section><section id="aio-2-understanding-your-code"><p>Content from <a href="2-understanding-your-code.html">Understanding your code</a></p>
+</div>
+<!-- 
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use. 
+ -->
+</section></section><section id="aio-2-understanding-your-code"><p>Content from <a href="2-understanding-your-code.html">Understanding your code</a></p>
 <hr>
 <p>Last updated on 2024-05-16 |
         
@@ -456,7 +550,7 @@ F. Add points to the initial plot</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <pre><code>D. Load necessary packages
 B. Choose only the most fuel efficient cars
@@ -532,7 +626,7 @@ requires 1</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution Title</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Error in length(5, 6, 7) : 3 arguments passed to ‘length’ which
@@ -609,7 +703,7 @@ editing, why? Edit as necessary.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Here is just one example for how each dataset could be improved.</p>
 <ol style="list-style-type: upper-alpha">
@@ -813,7 +907,7 @@ reinforce the objectives.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Output</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -842,7 +936,7 @@ challenge blocks?<a class="anchor" aria-label="anchor" href="#challenge-2-how-do
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
