@@ -394,7 +394,7 @@
         
 <section id="aio-1-intro-reproducible-examples"><p>Content from <a href="1-intro-reproducible-examples.html">What is a reprex and why is it useful?</a></p>
 <hr>
-<p>Last updated on 2024-07-17 |
+<p>Last updated on 2024-07-19 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/1-intro-reproducible-examples.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 17 minutes</p>
@@ -549,7 +549,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-2-understanding-your-code"><p>Content from <a href="2-understanding-your-code.html">Understanding your code</a></p>
 <hr>
-<p>Last updated on 2024-07-17 |
+<p>Last updated on 2024-07-19 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/2-understanding-your-code.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
@@ -624,7 +624,7 @@ F. Add points to the initial plot</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <pre><code>D. Load necessary packages
 B. Choose only the most fuel efficient cars
@@ -637,7 +637,7 @@ C. Display the plot that was just created</code></pre>
 </div>
 </div></section><section id="aio-3-debugging-basics"><p>Content from <a href="3-debugging-basics.html">De-bugging basics – what do I do when I encounter an error?</a></p>
 <hr>
-<p>Last updated on 2024-07-17 |
+<p>Last updated on 2024-07-19 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/3-debugging-basics.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
@@ -652,7 +652,10 @@ C. Display the plot that was just created</code></pre>
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>TODO</li>
+<li>Why do errors and warnings appear in R?</li>
+<li>Which areas of code are responsible for errors?</li>
+<li>How can I fix my code? What other options exist if I can’t fix
+it?</li>
 </ul>
 </div>
 </div>
@@ -661,8 +664,18 @@ C. Display the plot that was just created</code></pre>
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
+<p>After completing this episode, participants should be able to…</p>
 <ul>
-<li>TODO</li>
+<li>decode/describe what an error message is trying to communicate</li>
+<li>Identify specific lines and/or functions generating the error
+message</li>
+<li>Describe the general category of error message (e.g. syntax error,
+semantic errors, package-specific errors, etc.)</li>
+<li>Identify which problems are better suited for asking for further
+help, including online help and reprex</li>
+<li>Adopt an initial workflow to remedy errors, including ?help lookups,
+identifying and quickly fixing commonly-encountered R errors, and
+recogizing when to stop troubleshooting and ask for help</li>
 </ul>
 </div>
 </div>
@@ -703,7 +716,7 @@ requires 1</li>
   Solution Title
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Error in length(5, 6, 7) : 3 arguments passed to ‘length’ which
@@ -714,7 +727,7 @@ requires 1</li>
 </div>
 </div></section><section id="aio-4-minimal-reproducible-data"><p>Content from <a href="4-minimal-reproducible-data.html">Minimal Reproducible Data</a></p>
 <hr>
-<p>Last updated on 2024-07-17 |
+<p>Last updated on 2024-07-19 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/4-minimal-reproducible-data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 44 minutes</p>
@@ -781,7 +794,7 @@ editing, why? Edit as necessary.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Here is just one example for how each dataset could be improved.</p>
 <ol style="list-style-type: upper-alpha">
@@ -822,7 +835,7 @@ by someone else using only the information provided</li>
 </div>
 </div></section><section id="aio-5-minimal-reproducible-code"><p>Content from <a href="5-minimal-reproducible-code.html">Minimal Reproducible Code</a></p>
 <hr>
-<p>Last updated on 2024-07-17 |
+<p>Last updated on 2024-07-19 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/5-minimal-reproducible-code.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
@@ -858,7 +871,7 @@ by someone else using only the information provided</li>
 code section and use those to get people to break down code into minimal
 chunks. Emphasize that it’s not always going to be linear (</p></section><section id="aio-6-asking-your-question"><p>Content from <a href="6-asking-your-question.html">Asking your question</a></p>
 <hr>
-<p>Last updated on 2024-07-17 |
+<p>Last updated on 2024-07-19 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/6-asking-your-question.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
@@ -908,7 +921,7 @@ reproducible examples.</li>
 </div>
 </div></section><section id="aio-introduction"><p>Content from <a href="introduction.html">Example Episode</a></p>
 <hr>
-<p>Last updated on 2024-07-17 |
+<p>Last updated on 2024-07-19 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
@@ -971,7 +984,7 @@ reinforce the objectives.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -1003,7 +1016,7 @@ View”</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1031,7 +1044,7 @@ View”</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -1101,7 +1114,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-test"><p>Content from <a href="test.html">This is a test episode</a></p>
 <hr>
-<p>Last updated on 2024-07-17 |
+<p>Last updated on 2024-07-19 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/test.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 5 minutes</p>
@@ -1208,8 +1221,8 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
   "url": "https://kaijagahm.github.io/R-help-reprexes/instructor/aio.html",
   "identifier": "https://kaijagahm.github.io/R-help-reprexes/instructor/aio.html",
   "dateCreated": "2024-05-14",
-  "dateModified": "2024-07-17",
-  "datePublished": "2024-07-17"
+  "dateModified": "2024-07-19",
+  "datePublished": "2024-07-19"
 }
 
   </script><script>
