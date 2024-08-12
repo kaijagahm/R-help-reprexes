@@ -392,7 +392,7 @@
         
 <section id="aio-1-intro-reproducible-examples"><p>Content from <a href="1-intro-reproducible-examples.html">What is a reprex and why is it useful?</a></p>
 <hr>
-<p>Last updated on 2024-08-06 |
+<p>Last updated on 2024-08-12 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/1-intro-reproducible-examples.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -546,7 +546,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-2-understanding-your-code"><p>Content from <a href="2-understanding-your-code.html">Understanding your code</a></p>
 <hr>
-<p>Last updated on 2024-08-06 |
+<p>Last updated on 2024-08-12 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/2-understanding-your-code.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -633,7 +633,7 @@ C. Display the plot that was just created</code></pre>
 </div>
 </div></section><section id="aio-3-identify-the-problem"><p>Content from <a href="3-identify-the-problem.html">Identify the problem and make a plan</a></p>
 <hr>
-<p>Last updated on 2024-08-06 |
+<p>Last updated on 2024-08-12 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/3-identify-the-problem.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -725,7 +725,7 @@ requires 1</li>
 </div>
 </div></section><section id="aio-4-minimal-reproducible-data"><p>Content from <a href="4-minimal-reproducible-data.html">Minimal Reproducible Data</a></p>
 <hr>
-<p>Last updated on 2024-08-06 |
+<p>Last updated on 2024-08-12 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/4-minimal-reproducible-data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1065,9 +1065,88 @@ sample()</p>
 <h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout4"></a>
 </h3>
 <div class="callout-content">
-
+<p>Callout For more handy functions for creating data frames and
+variables, see the cheatsheet. For some questions, specific formats can
+be needed. For these, one can use any of the provided as.someType
+functions: <code>as.factor</code>, <code>as.integer</code>,
+<code>as.numeric</code>, <code>as.character</code>,
+<code>as.Date</code>, <code>as.xts</code>.</p>
 </div>
 </div>
+</div>
+<p>Example:</p>
+<p>We want to quantify presence/absence of three rodent species in a
+particular treatment plot after 12 days of sampling. Let’s think about
+what variables we would need.</p>
+<p>A variable for species, how many? Let’s say 3 species, and call them
+A, B, and C.</p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>species <span class="ot">&lt;-</span> <span class="fu">c</span>(‘A’,’B’,’C’)</span></code></pre>
+</div>
+<p>We then need a variable that tells us whether or not the species is
+present in that treatment plot.</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>present <span class="ot">&lt;-</span> <span class="fu">c</span>(‘yes’,’no’)</span></code></pre>
+</div>
+<p>If we are only looking at one treatment plot then we don’t need a
+“treatment” variable. Keep it minimal! Ok, now we need to randomly
+sample from these to generate our dataset after 12 days of sampling and
+make a new variable “day” with numbers 1-12</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">day</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span></span></code></pre>
+</div>
+<p>We can then sample our first two variables 12 times.</p>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sample_data</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span></span>
+<span>  Species <span class="op">=</span> <span class="fu">sample</span><span class="op">(</span><span class="va">species</span>, <span class="fl">12</span>, replace<span class="op">=</span><span class="cn">T</span><span class="op">)</span>,</span>
+<span>  Present <span class="op">=</span> <span class="fu">sample</span><span class="op">(</span><span class="va">present</span>, <span class="fl">12</span>, replace<span class="op">=</span><span class="cn">T</span><span class="op">)</span>,</span>
+<span>  Day <span class="op">=</span> <span class="va">day</span></span>
+<span><span class="op">)</span></span></code></pre>
+</div>
+<p>Now what is wrong with this? → we sampled 12 times, but what we
+needed was to sample each species 12 times.</p>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="at">Species =</span> species,</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="at">Present =</span> <span class="fu">sample</span>(present, <span class="dv">36</span>, <span class="at">replace=</span>T)</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="at">Day =</span> day</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>)</span></code></pre>
+</div>
+<p>We also didn’t set a seed. Remember: sample() creates a random
+dataset! This will not be consistently reproducible.</p>
+<div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="at">Species =</span> species,</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>  <span class="at">Present =</span> <span class="fu">sample</span>(present, <span class="dv">36</span>, <span class="at">replace=</span>T)</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>  <span class="at">Day =</span> day</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>)</span></code></pre>
+</div>
+<p>Instead of creating the original variables we can also do it all at
+once when creating the data frame:</p>
+<div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>		<span class="at">Species =</span> <span class="fu">c</span>(‘A’,’B’,’C’),</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>		<span class="at">Present =</span> <span class="fu">sample</span>(<span class="fu">c</span>(‘yes’, ‘no’), <span class="dv">36</span>, <span class="at">replace=</span>T),</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>		<span class="at">Day =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>) </span></code></pre>
 </div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
@@ -1096,7 +1175,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-5-minimal-reproducible-code"><p>Content from <a href="5-minimal-reproducible-code.html">Minimal Reproducible Code</a></p>
 <hr>
-<p>Last updated on 2024-08-06 |
+<p>Last updated on 2024-08-12 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/5-minimal-reproducible-code.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1131,7 +1210,7 @@ any links that you are not going to use.
 code section and use those to get people to break down code into minimal
 chunks. Emphasize that it’s not always going to be linear (</p></section><section id="aio-6-asking-your-question"><p>Content from <a href="6-asking-your-question.html">Asking your question</a></p>
 <hr>
-<p>Last updated on 2024-08-06 |
+<p>Last updated on 2024-08-12 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/6-asking-your-question.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1180,7 +1259,7 @@ reproducible examples.</li>
 </div>
 </div></section><section id="aio-introduction"><p>Content from <a href="introduction.html">Example Episode</a></p>
 <hr>
-<p>Last updated on 2024-08-06 |
+<p>Last updated on 2024-08-12 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1358,7 +1437,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-test"><p>Content from <a href="test.html">This is a test episode</a></p>
 <hr>
-<p>Last updated on 2024-08-06 |
+<p>Last updated on 2024-08-12 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/test.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1464,8 +1543,8 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
   "url": "https://kaijagahm.github.io/R-help-reprexes/aio.html",
   "identifier": "https://kaijagahm.github.io/R-help-reprexes/aio.html",
   "dateCreated": "2024-05-14",
-  "dateModified": "2024-08-06",
-  "datePublished": "2024-08-06"
+  "dateModified": "2024-08-12",
+  "datePublished": "2024-08-12"
 }
 
   </script><script>
