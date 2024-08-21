@@ -118,11 +118,11 @@
   RRRRRRR, I’m stuck!
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 25%" class="percentage">
-    25%
+<aside class="col-md-12 lesson-progress"><div style="width: 30%" class="percentage">
+    30%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 25%" aria-valuenow="25" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 30%" aria-valuenow="30" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -272,24 +272,6 @@ dataset?</a></li>
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
-<div class="accordion accordion-flush" id="accordionFlush8">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading8">
-        <a href="introduction.html">7. Example Episode</a>
-    </div><!--/div.accordion-header-->
-
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush9">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading9">
-        <a href="test.html">8. This is a test episode</a>
-    </div><!--/div.accordion-header-->
-
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
                 </div>
               </div>
             </div>
@@ -348,7 +330,7 @@ dataset?</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Minimal Reproducible Data</h1>
-        <p>Last updated on 2024-08-12 |
+        <p>Last updated on 2024-08-21 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/4-minimal-reproducible-data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -559,7 +541,7 @@ one.)</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: upper-alpha"><li>Not reproducible because it is a screenshot.<br></li>
 <li>Not reproducible because it is a path to a file that only exists on
@@ -618,7 +600,7 @@ this code? Can you describe why the other ones are not?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>The correct answer is C!</p>
 <ol style="list-style-type: upper-alpha"><li>does not include the variable of interest (weight).</li>
@@ -753,6 +735,52 @@ once when creating the data frame:</p>
 <span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>		<span class="at">Day =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)</span>
 <span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>) </span></code></pre>
 </div>
+<div id="exercise-3" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div id="exercise-3" class="callout-inner">
+<h3 class="callout-title">Exercise 3<a class="anchor" aria-label="anchor" href="#exercise-3"></a>
+</h3>
+<div class="callout-content">
+<p>Now practice doing it yourself. Create a data frame with: A. One
+categorical variable with 5 levels. One continuous variable. B. One
+continuous variable normally distributed C. First name, last name, sex,
+age, and treatment type.</p>
+</div>
+</div>
+</div>
+<div id="exercise-4" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="exercise-4" class="callout-inner">
+<h3 class="callout-title">Exercise 4<a class="anchor" aria-label="anchor" href="#exercise-4"></a>
+</h3>
+<div class="callout-content">
+<p>For each of the following, identify the necessary data type to create
+a minimal reproducible dataset. A. We have data representing whether
+someone voted for a candidate from party A or party B. B. We have
+housing data of zipcodes, home prices, number of bedrooms and bathrooms
+for each house. Some of the data may be missing</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
+</button>
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div class="accordion-body">
+<p>A. We just need a T/F vector of whether someone voted for A (T) or B
+(F). B. We need a dataframe with separate columns for zipcodes (int),
+home prices (double), number of bedrooms (int), and bathrooms (double).
+Some NA’s should be included.</p>
+</div>
+</div>
+</div>
+</div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -834,8 +862,8 @@ any links that you are not going to use.
   "url": "https://kaijagahm.github.io/R-help-reprexes/4-minimal-reproducible-data.html",
   "identifier": "https://kaijagahm.github.io/R-help-reprexes/4-minimal-reproducible-data.html",
   "dateCreated": "2024-05-14",
-  "dateModified": "2024-08-12",
-  "datePublished": "2024-08-12"
+  "dateModified": "2024-08-21",
+  "datePublished": "2024-08-21"
 }
 
   </script><script>
