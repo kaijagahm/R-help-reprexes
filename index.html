@@ -465,13 +465,13 @@ regularly use is a good practice.</p>
 <h3 id="install-required-r-packages">Install required R packages<a class="anchor" aria-label="anchor" href="#install-required-r-packages"></a></h3>
 <p>During the course we will need a number of R packages. Packages
 contain useful R code written by other people. We will use the packages
-<code>ratdat</code>, <code>reprex</code>, and
-<code>tidyverse</code>.</p>
+<code>ratdat</code>, <code>reprex</code>, <code>dplyr</code>, and
+<code>ggplot2</code>.</p>
 <p>To try to install these packages, open RStudio and copy and paste the
 following command into the console window (look for a blinking cursor on
 the bottom left), then press the <kbd>Enter</kbd> (Windows and Linux) or
 <kbd>Return</kbd> (MacOS) to execute the command.</p>
-<p><code>{r} install.packages(c("ratdat", "reprex", "tidyverse"))</code></p>
+<p><code>{r} install.packages(c("ratdat", "reprex", "dplyr", "ggplot2"))</code></p>
 <p>Alternatively, you can install the packages using RStudio’s graphical
 user interface by going to <code>Tools &gt; Install Packages</code> and
 typing the names of the packages separated by a comma.</p>
@@ -484,7 +484,8 @@ by pasting the following code into the console:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">ratdat</span><span class="op">)</span></span>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">reprex</span><span class="op">)</span></span>
-<span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span></code></pre>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">dplyr</span><span class="op">)</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span></span></code></pre>
 </div>
 <p>If you do not see an error like
 <code>there is no package called ‘...’</code> you are good to go!</p>
