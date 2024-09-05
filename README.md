@@ -52,7 +52,7 @@ Our first demo/focus group:
 * Madigan Durham
 * [Mariana Harris](https://github.com/mariharris)
 * Garrett Lawson
-* Maddie Zuercher
+* [Maddie Zuercher](https://madeleinez.weebly.com/)
 
 ## Cite this content
 See [CITATION.cff](CITATION.cff) for citation information, including a list of authors.
