@@ -694,12 +694,29 @@ requires 1</li>
 </div>
 </div></section><section id="aio-4-minimal-reproducible-data"><p>Content from <a href="4-minimal-reproducible-data.html">Minimal Reproducible Data</a></p>
 <hr>
-<p>Last updated on 2024-08-21 |
+<p>Last updated on 2024-09-25 |
 
         <a href="https://github.com/kaijagahm/R-help-reprexes/edit/main/episodes/4-minimal-reproducible-data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
+<p><strong>HELP</strong> <strong>We need to include but hide the data
+previously run so that we can continue to use it</strong></p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Hide this chunk</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">readr</span><span class="op">)</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">dplyr</span><span class="op">)</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">stringr</span><span class="op">)</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">ratdat</span><span class="op">)</span></span>
+<span><span class="va">rodents</span><span class="op">&lt;-</span><span class="va">complete_old</span></span>
+<span><span class="va">krats</span> <span class="op">&lt;-</span> <span class="va">rodents</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">genus</span> <span class="op">==</span> <span class="st">"Dipodomys"</span><span class="op">)</span><span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu">ymd</span><span class="op">(</span><span class="fu">paste</span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
 <div class="overview card">
 <h2 class="card-header">Overview</h2>
 <div class="row g-0">
@@ -741,26 +758,19 @@ reproducible</li>
 it?<a class="anchor" aria-label="anchor" href="#what-is-a-minimal-reproducible-dataset-and-why-do-i-need-it"></a>
 </h2>
 <hr class="half-width">
-<ul>
-<li>Now that we understand some basic errors and how to fix them, let’s
+<p>Now that we understand some basic errors and how to fix them, let’s
 look at what to do when we can’t figure out a solution to our coding
-problem</li>
-<li>This is when you really need to know how to create a minimal
-reproducible example (MRE) as we talked about in episode 1</li>
-<li>In general, an MRE will need:</li>
-<li>A minimal dataset that can reproduce the error (or access to a such
-a dataset)</li>
-<li>Minimal runnable code that can reproduce the error using the minimal
-dataset</li>
-<li>Basic information about the system, R version, and packages being
-used</li>
-<li>In case of random functions, a seed that will produce the same
-results each time (e.g., use set.seed())</li>
-<li>The first step in creating an MRE is to set up some data <strong>for
+problem. This is when you really need to know how to create a minimal
+reproducible example (MRE) as we talked about in episode 1. In general,
+an MRE will need: - A minimal dataset that can reproduce the error (or
+access to a such a dataset) - Minimal runnable code that can reproduce
+the error using the minimal dataset - Basic information about the
+system, R version, and packages being used - In case of random
+functions, a seed that will produce the same results each time (e.g.,
+use set.seed())</p>
+<p>The first step in creating an MRE is to set up some data <strong>for
 your helper to be able to reproduce your error and play around with the
-code in order to fix it.</strong>
-</li>
-</ul>
+code in order to fix it.</strong></p>
 <p>Why? Remember our IT problem? It would be a lot easier for the IT
 support person to fix your computer if they could actually touch it, see
 the screen, and click around.</p>
@@ -815,22 +825,26 @@ dirty” tinkering with the dataset.</p>
 dataset?<a class="anchor" aria-label="anchor" href="#what-do-i-need-to-include-in-a-minimal-reproducible-dataset"></a>
 </h2>
 <hr class="half-width">
-<p>What needs to be included in a reproducible dataset (wait for
-audience)?</p>
-<p>It’s actually all in the name: - it needs to be minimal, which means
-it only contains the necessary information to run the piece of code with
-which you are struggling. - it needs to be reproducible. The data you
-provide must consistently reproduce the output or error with which you
-are struggling. - Can alternatively think of this as “relevant” to the
-problem. Maybe a silly example but–if you’re struggling with the
-behavior of a column that’s a factor, it wouldn’t be useful to make a
-dataset that contains only numeric data, no matter how simple and
-elegant that dataset might appear to be. - It needs to be complete and
-accessible. Remember, your helper may not be in the room with you or
-have access to your computer, therefore the data must be able to stand
-on its own, it must be complete and free of dependencies. Alternatively,
-you must ensure your helper has access to the dataset you provide. More
-on this later.</p>
+<p>What needs to be included in a reproducible dataset?</p>
+
+<p>It’s actually all in the name:</p>
+<ul>
+<li>it needs to be minimal, which means it only contains the necessary
+information to run the piece of code with which you are struggling.</li>
+<li>it needs to be reproducible. The data you provide must consistently
+reproduce the output or error with which you are struggling.</li>
+<li>Can alternatively think of this as “relevant” to the problem. Maybe
+a silly example but–if you’re struggling with the behavior of a column
+that’s a factor, it wouldn’t be useful to make a dataset that contains
+only numeric data, no matter how simple and elegant that dataset might
+appear to be.</li>
+<li>It needs to be complete and accessible.</li>
+</ul>
+<p>Remember, your helper may not be in the room with you or have access
+to your computer, therefore the data must be able to stand on its own,
+it must be complete and free of dependencies. Alternatively, you must
+ensure your helper has access to the dataset you provide. More on this
+later.</p>
 <div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -857,11 +871,11 @@ script itself.</p>
 <div class="callout-inner">
 <h3 class="callout-title">Callout</h3>
 <div class="callout-content">
-<p>It can be helpful to simply look at the ?help section. Scroll down to
-where they have examples. These will usually be minimal and
+<p>It can be helpful to simply look at the ?h elp section. Scroll down
+to where they have examples. These will usually be minimal and
 reproducible.</p>
 <p>For example, let’s look at the function <code>mean</code>:</p>
-<div class="codewrapper sourceCode" id="cb1">
+<div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -869,7 +883,7 @@ reproducible.</p>
 </div>
 <p>We see examples that can be run directly on the console, with no
 additional code.</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -888,11 +902,8 @@ additional code.</p>
 <h3 class="callout-title">Exercise 1</h3>
 <div class="callout-content">
 <p>These datasets are not well suited for use in a reprex. For each one,
-try to reproduce the dataset, explain what’s wrong with it, and suggest
-how to fix it. (Hint: imagine you are a helper and someone has asked you
-to work on a problem with each of these datasets. Think through the
-steps you would take and how easy/difficult it would be to use each
-one.)</p>
+try to reproduce the dataset on your own in R. Does it work? What
+happened? Explain.</p>
 <ol style="list-style-type: upper-alpha">
 <li>(A screenshot of our dataset – need to upload images to repo)</li>
 <li><code>sample_data &lt;- read_csv(“/Users/kaija/Desktop/RProjects/ResearchProject/data/sample_dataset.csv”)</code></li>
@@ -945,13 +956,13 @@ minimal and reproducible?</p>
 <div id="exercise-2" class="callout-inner">
 <h3 class="callout-title">Exercise 2</h3>
 <div class="callout-content">
-<p>Here is a piece of code that is throwing me a simple error:</p>
-<div class="codewrapper sourceCode" id="cb3">
+<p>Here is a piece of code that is throwing me a simple error (it is
+returning NA):</p>
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(ratdat)</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">mean</span>(complete<span class="sc">$</span>weight)</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="cn">NA</span></span></code></pre>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">mean</span><span class="op">(</span><span class="va">rodents</span><span class="op">$</span><span class="va">weight</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Which of the following represents a minimal reproducible dataset for
 this code? Can you describe why the other ones are not?</p>
@@ -959,8 +970,8 @@ this code? Can you describe why the other ones are not?</p>
 <li><code>sample_data &lt;- data.frame(month = rep(7:9, each = 2), hindfoot_length = c(10, 25, 14, 26, 30, 17))</code></li>
 <li><code>sample_data &lt;- data.frame(weight = rnorm(10))</code></li>
 <li><code>sample_data &lt;- data.frame(weight = c(100, NA, 30, 60, 40, NA))</code></li>
-<li><code>sample_data &lt;- sample(complete$weight, 10)</code></li>
-<li><code>sample_data &lt;- complete_modified[1:20,]</code></li>
+<li><code>sample_data &lt;- sample(rodents$weight, 10)</code></li>
+<li><code>sample_data &lt;- rodents_modified[1:20,]</code></li>
 </ol>
 </div>
 </div>
@@ -982,7 +993,7 @@ may include NAs, sometime it may not (not guaranteed to reproduce the
 error). It can be used if a seed is set (see next section for more
 info).</li>
 <li>uses a dataset that isn’t accessible without previous data wrangling
-code–the object complete_modified doesn’t exist.</li>
+code–the object rodents_modified doesn’t exist.</li>
 </ol>
 </div>
 </div>
@@ -1005,18 +1016,42 @@ same/different?</p>
 <h3 id="create-a-dummy-dataset-from-scratch">4.3.1 Create a dummy dataset from scratch<a class="anchor" aria-label="anchor" href="#create-a-dummy-dataset-from-scratch"></a>
 </h3>
 <p>You can create vectors using</p>
-<pre><code><span><span class="va">vector</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span> </span></code></pre>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>  <span class="va">vector</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span> </span></code></pre>
+</div>
 <p>You can add some randomness by sampling from a vector using
 sample()</p>
 <p>For example you can sample numbers 1 through 10 in a random order</p>
-<pre><code><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">sample</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code></pre>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>    <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">sample</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code></pre>
+</div>
 <p>Or you can use a random normal distribution</p>
-<pre><code><span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code></pre>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span>    <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code></pre>
+</div>
 <p>You can also use letters to create factors.</p>
-<pre><code><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">sample</span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="fl">20</span>, replace<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span></code></pre>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">sample</span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, <span class="fl">20</span>, replace<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span></code></pre>
+</div>
 <p>You can create a dataframe using <code>data.frame</code> (or
 <code>tibble</code> in the <code>dplyr</code> package).</p>
-<pre><code>	data &lt;- data.frame (x = sample(letters[1:3], 20, replace=T]), y = rnorm(1:20))</code></pre>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>    data <span class="ot">&lt;-</span> <span class="fu">data.frame</span> (<span class="at">x =</span> <span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], <span class="dv">20</span>, <span class="at">replace=</span>T]), <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>))</span></code></pre>
+</div>
 <p>Make sure you name your variables and keep it simple.</p>
 <div id="callout4" class="callout">
 <div class="callout-square">
@@ -1025,115 +1060,310 @@ sample()</p>
 <div class="callout-inner">
 <h3 class="callout-title">Callout</h3>
 <div class="callout-content">
-<p>Callout For more handy functions for creating data frames and
-variables, see the cheatsheet. For some questions, specific formats can
-be needed. For these, one can use any of the provided as.someType
-functions: <code>as.factor</code>, <code>as.integer</code>,
+<p>For more handy functions for creating data frames and variables, see
+the cheatsheet. For some questions, specific formats can be needed. For
+these, one can use any of the provided as.someType functions:
+<code>as.factor</code>, <code>as.integer</code>,
 <code>as.numeric</code>, <code>as.character</code>,
 <code>as.Date</code>, <code>as.xts</code>.</p>
 </div>
 </div>
 </div>
-<p>Example:</p>
-<p>We want to quantify presence/absence of three rodent species in a
-particular treatment plot after 12 days of sampling. Let’s think about
-what variables we would need.</p>
-<p>A variable for species, how many? Let’s say 3 species, and call them
-A, B, and C.</p>
-<div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>species <span class="ot">&lt;-</span> <span class="fu">c</span>(‘A’,’B’,’C’)</span></code></pre>
-</div>
-<p>We then need a variable that tells us whether or not the species is
-present in that treatment plot.</p>
+<p>Let’s come back to our kangaroo rats example. Since we will be
+working with the same dataset this year, we want to know how many
+kangaroo rats of each species were found in each plot type in past years
+so that we can better estimate what sample size we can expect.</p>
+<p>Here is the code you use:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>present <span class="ot">&lt;-</span> <span class="fu">c</span>(‘yes’,’no’)</span></code></pre>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">krats</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, fill <span class="op">=</span> <span class="va">plot_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>alpha<span class="op">=</span><span class="fl">0.6</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">species</span><span class="op">)</span><span class="op">+</span> </span>
+<span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_viridis_d</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"plasma"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">geom_vline</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu">ymd</span><span class="op">(</span><span class="st">"1988-01-01"</span><span class="op">)</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>If we are only looking at one treatment plot then we don’t need a
-“treatment” variable. Keep it minimal! Ok, now we need to randomly
-sample from these to generate our dataset after 12 days of sampling and
-make a new variable “day” with numbers 1-12</p>
+<p>Now let’s say we saw this and decided we wanted to get rid of “sp.”
+but didn’t know how. We want to ask someone online but we first need to
+create a minimal reproducible example.</p>
+<p>What variables would we need to reproduce this figure?</p>
+<p>A variable for species, how many? 4. Let’s call them A, B, C, and
+D.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">day</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">species</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">'A'</span>,<span class="st">'B'</span>,<span class="st">'C'</span>,<span class="st">'D'</span><span class="op">)</span></span></code></pre>
 </div>
-<p>We can then sample our first two variables 12 times.</p>
+<p>We then need a variable for plot type, we have 5 but we could cut it
+down to 2; let’s call them P1 and P2. In reality, we probably don’t even
+need this for this question, but for the sake of practicing let’s add it
+in.</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sample_data</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span></span>
-<span>  Species <span class="op">=</span> <span class="fu">sample</span><span class="op">(</span><span class="va">species</span>, <span class="fl">12</span>, replace<span class="op">=</span><span class="cn">T</span><span class="op">)</span>,</span>
-<span>  Present <span class="op">=</span> <span class="fu">sample</span><span class="op">(</span><span class="va">present</span>, <span class="fl">12</span>, replace<span class="op">=</span><span class="cn">T</span><span class="op">)</span>,</span>
-<span>  Day <span class="op">=</span> <span class="va">day</span></span>
-<span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">plot.type</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">'P1'</span>,<span class="st">'P2'</span><span class="op">)</span></span></code></pre>
 </div>
-<p>Now what is wrong with this? → we sampled 12 times, but what we
-needed was to sample each species 12 times.</p>
+<p>Lastly we need a variable for date. The specifics don’t matter here,
+so let’s just call it days and make it 1-10.</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>  <span class="at">Species =</span> species,</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="at">Present =</span> <span class="fu">sample</span>(present, <span class="dv">36</span>, <span class="at">replace=</span>T)</span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="at">Day =</span> day</span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>)</span></code></pre>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">days</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></code></pre>
 </div>
-<p>We also didn’t set a seed. Remember: sample() creates a random
-dataset! This will not be consistently reproducible.</p>
+<p>Great! Now we have all of our variables, let’s go sampling–we can
+simulate the data collected each day by using <code>sample()</code>.</p>
+<p>We need to sample each plot for 10 days and presumably find a certain
+number of each species in each plot. Let’s pretend we find a total of
+100 species, this mean we need to sample the vector <code>species</code>
+100 times. Since we want species to repeat, we will also set replace to
+T. We then need to sample the plots for the same number of times, so
+that each species sample is associated with either P1 or P2. Lastly, we
+want to add each day we sampled.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>  <span class="at">Species =</span> species,</span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>  <span class="at">Present =</span> <span class="fu">sample</span>(present, <span class="dv">36</span>, <span class="at">replace=</span>T)</span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>  <span class="at">Day =</span> day</span>
-<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>)</span></code></pre>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sample_data</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span></span>
+<span>  Species <span class="op">=</span> <span class="fu">sample</span><span class="op">(</span><span class="va">species</span>, <span class="fl">100</span>, replace<span class="op">=</span><span class="cn">T</span><span class="op">)</span>,</span>
+<span>  Plot <span class="op">=</span> <span class="fu">sample</span><span class="op">(</span><span class="va">plot.type</span>, <span class="fl">100</span>, replace<span class="op">=</span><span class="cn">T</span><span class="op">)</span>,</span>
+<span>  Day <span class="op">=</span> <span class="va">day</span></span>
+<span><span class="op">)</span></span></code></pre>
 </div>
-<p>Instead of creating the original variables we can also do it all at
-once when creating the data frame:</p>
+<p>Great! Now we have a sample data set that is minimal, but is is
+reproducible?</p>
+
+<p>It isn’t! Why?</p>
+<p>Remember: sample() creates a random dataset! This will not be
+consistently reproducible. In order to make this example fully
+reproducible we should first <code>set.seed()</code>.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>		<span class="at">Species =</span> <span class="fu">c</span>(‘A’,’B’,’C’),</span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>		<span class="at">Present =</span> <span class="fu">sample</span>(<span class="fu">c</span>(‘yes’, ‘no’), <span class="dv">36</span>, <span class="at">replace=</span>T),</span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>		<span class="at">Day =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>) </span></code></pre>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">sample_data</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span></span>
+<span>  Species <span class="op">=</span> <span class="fu">sample</span><span class="op">(</span><span class="va">species</span>, <span class="fl">100</span>, replace<span class="op">=</span><span class="cn">T</span><span class="op">)</span>,</span>
+<span>  Plot <span class="op">=</span> <span class="fu">sample</span><span class="op">(</span><span class="va">plot.type</span>, <span class="fl">100</span>, replace<span class="op">=</span><span class="cn">T</span><span class="op">)</span>,</span>
+<span>  Day <span class="op">=</span> <span class="va">day</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">sample_data</span></span></code></pre>
 </div>
-<div id="exercise-3" class="callout discussion">
+<p>Now we have our minimal reproducible example! But are we sure it
+reproduces what we are trying to reproduce? Let’s test it out.</p>
+<div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sample_data</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Day</span>, fill <span class="op">=</span> <span class="va">Plot</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>alpha<span class="op">=</span><span class="fl">0.6</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">Species</span><span class="op">)</span><span class="op">+</span> </span>
+<span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_viridis_d</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"plasma"</span><span class="op">)</span></span></code></pre>
+</div>
+<p>Yes! It is certainly simplified, but it has the elements we want it
+to have. And now we can ask how to get rid of “C”. Given that this was a
+very simple question, we could have simplified this example even
+further; we could have used 2 species and even just 2 days, in which
+case a simple solution could be</p>
+<div class="codewrapper sourceCode" id="cb17">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sample_data2</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span></span>
+<span>species <span class="op">=</span> <span class="fu">sample</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">'A'</span>,<span class="st">'B'</span><span class="op">)</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>,</span>
+<span>days <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">sample_data2</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">days</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>alpha<span class="op">=</span><span class="fl">0.6</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">species</span><span class="op">)</span><span class="op">+</span> </span>
+<span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+</div>
+<p>which is even more simplistic than the one before but still contains
+the elemnts we are interested–we have a set of “species” separated into
+facets and we want to get rid of one of them. In reality, had we
+realized that we needed to get rid of the rows with “sp.” in them, we
+could have ignored the figure entirely and posed the question about the
+data alone. E.g., “how do I remove rows that contain a specific name?”
+Then give just the example dataset we created.</p>
+<div id="exercise-3-10-minutes" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
-<div id="exercise-3" class="callout-inner">
-<h3 class="callout-title">Exercise 3</h3>
+<div id="exercise-3-10-minutes" class="callout-inner">
+<h3 class="callout-title">Exercise 3 (10 minutes)</h3>
 <div class="callout-content">
-<p>Now practice doing it yourself. Create a data frame with: A. One
-categorical variable with 5 levels. One continuous variable. B. One
-continuous variable normally distributed C. First name, last name, sex,
-age, and treatment type.</p>
+<p>Now practice doing it yourself. Create a data frame with:</p>
+<p>A. One categorical variable with 5 levels. One continuous variable.
+B. One continuous variable normally distributed C. First name, last
+name, sex, age, and treatment type.</p>
 </div>
 </div>
 </div>
-<div id="exercise-4" class="callout challenge">
+</div>
+</section><section><h2 class="section-heading" id="create-a-dataset-using-an-existing-dataset">4.3.2 Create a dataset using an existing dataset<a class="anchor" aria-label="anchor" href="#create-a-dataset-using-an-existing-dataset"></a>
+</h2>
+<hr class="half-width">
+<p>If you don’t want to create a dataset from scratch, maybe because you
+have too many variables or it’s a more complicated structure and you are
+not sure where the error is, you can subset from an existing dataset.
+Useful functions for subsetting a dataset include <code>subset()</code>,
+<code>head()</code>, <code>tail()</code>, indexing with [] (e.g.,
+iris[1:4,]). Alternatively, you can use tidyverse functions like
+<code>select()</code>, and <code>filter()</code>. You can also use the
+same <code>sample()</code> functions we covered earlier.</p>
+<p>A list of readily available datasets can be found using
+<code>library(help="datasets")</code>. You can then use <code>?</code>
+in front of the dataset name to get more information about what the
+contents of the dataset.</p>
+<p>When working with a built-in dataset you still have to edit your code
+to fit the new data, but it is probably faster than building a large
+dataset from scratch, and it gets easier with practice!</p>
+<p>Let’s keep using our previous example, how can we reproduce that
+figure using the existing dataset <code>mpg</code>. First, let’s
+interrogate this dataset to see what we are working with.</p>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">?</span><span class="va">mpg</span></span></code></pre>
+</div>
+<p>Which variable from mpg do you think we could use to replace our
+variables? Remember: we need one for species, one for plot type, and one
+for date.</p>
+<p>There are certainly multiple options! Let’s go with model for
+species, manufacturer for plot type, and year for date.</p>
+<div class="codewrapper sourceCode" id="cb19">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">model</span>, <span class="va">manufacturer</span>, <span class="va">year</span><span class="op">)</span></span>
+<span><span class="fu">dim</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span><span class="fu">glimpse</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre>
+</div>
+<p>We only need 4 species, and 5 plots. How many do we have here?</p>
+<div class="codewrapper sourceCode" id="cb20">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">length</span><span class="op">(</span><span class="fu">unique</span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">model</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="fu">length</span><span class="op">(</span><span class="fu">unique</span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">manufacturer</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<p>Certainly more than we need. Then let’s simplify.</p>
+<div class="codewrapper sourceCode" id="cb21">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">model</span> <span class="op">%in%</span> <span class="fu">sample</span><span class="op">(</span><span class="va">model</span>, <span class="fl">4</span>, replace <span class="op">=</span> <span class="cn">F</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<p>Cool, now we have just 4 models. BUT we also only have 2 years… so
+maybe year wasn’t the best choice afterall, let’s change it to hwy</p>
+<div class="codewrapper sourceCode" id="cb22">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">model</span>, <span class="va">manufacturer</span>, <span class="va">hwy</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">model</span> <span class="op">%in%</span> <span class="fu">sample</span><span class="op">(</span><span class="va">model</span>, <span class="fl">4</span>, replace <span class="op">=</span> <span class="cn">F</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<p>Now we can try out plot</p>
+<div class="codewrapper sourceCode" id="cb23">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">hwy</span>, fill <span class="op">=</span> <span class="va">manufacturer</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>alpha<span class="op">=</span><span class="fl">0.6</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">model</span><span class="op">)</span><span class="op">+</span> </span>
+<span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_viridis_d</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"plasma"</span><span class="op">)</span></span></code></pre>
+</div>
+<p>Do you think that works?</p>
+<p>It turns out that maybe manufacturer was not the best representation
+for plot, since we do need each car model to appear in each “plot”. What
+would all cars have?</p>
+<p>Let’s change model to manufacturer, and let’s add class.</p>
+<div class="codewrapper sourceCode" id="cb24">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">data2</span> <span class="op">&lt;-</span> <span class="va">mpg</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">manufacturer</span>, <span class="va">class</span>, <span class="va">hwy</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">manufacturer</span> <span class="op">%in%</span> <span class="fu">sample</span><span class="op">(</span><span class="va">manufacturer</span>, <span class="fl">4</span>, replace <span class="op">=</span> <span class="cn">F</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span><span class="va">data2</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">hwy</span>, fill <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span>alpha<span class="op">=</span><span class="fl">0.6</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">manufacturer</span><span class="op">)</span><span class="op">+</span> </span>
+<span>  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_viridis_d</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"plasma"</span><span class="op">)</span></span></code></pre>
+</div>
+<p>That’s more like it! You can keep playing around with it or you can
+give it more thought apriori, but either way you get the idea. While
+what we get is not an exact replica, it’s an analogy. The important
+thing is that we created a figure whose basic elements/structure or “key
+features” remain intact–namely, the number and type of variables and
+categories.</p>
+<p>Now it is your turn!</p>
+<div id="discussion3" class="callout discussion">
 <div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
+<i class="callout-icon" data-feather="message-circle"></i>
 </div>
-<div id="exercise-4" class="callout-inner">
-<h3 class="callout-title">Exercise 4</h3>
+<div class="callout-inner">
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
-<p>For each of the following, identify the necessary data type to create
-a minimal reproducible dataset. A. We have data representing whether
-someone voted for a candidate from party A or party B. B. We have
-housing data of zipcodes, home prices, number of bedrooms and bathrooms
-for each house. Some of the data may be missing</p>
+<p>For each of the following, identify which data are necessary to
+create a minimal reproducible dataset using <code>mpg</code>. A) We want
+to know how the highway mpg has changed over the years<br>
+B) We need a list of all “types” of cars and their fuel type for each
+manufacturer<br>
+C) We want to compare the average city mpg for a compact car from each
+manufacturer</p>
+</div>
+</div>
+</div>
+<p><strong>OR change the above challenge to be about ratdat</strong></p>
+<p><strong>OR move to…</strong></p>
+<p>Now that we know how many of each species were captured over the
+years, we want to know how many of each species you might expect to
+catch per day.</p>
+<p>Let’s practice how we would do this with our data.</p>
+
+<p>We end up with the following code:</p>
+<div class="codewrapper sourceCode" id="cb25">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">krats_per_day</span> <span class="op">&lt;-</span> <span class="va">krats</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">date</span>, <span class="va">year</span>, <span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>n <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">species</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">krats_per_day</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">species</span>, y <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">geom_boxplot</span><span class="op">(</span>outlier.shape <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">geom_jitter</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.2</span>, alpha <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">theme_classic</span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">ylab</span><span class="op">(</span><span class="st">"Number per day"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu">xlab</span><span class="op">(</span><span class="st">"Species"</span><span class="op">)</span></span></code></pre>
+</div>
+<div id="discussion4" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Challenge</h3>
+<div class="callout-content">
+<p>How might you reproduce this using the mpg dataset?</p>
 </div>
 </div>
 </div>
@@ -1144,14 +1374,122 @@ for each house. Some of the data may be missing</p>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
-<p>A. We just need a T/F vector of whether someone voted for A (T) or B
-(F). B. We need a dataframe with separate columns for zipcodes (int),
-home prices (double), number of bedrooms (int), and bathrooms (double).
-Some NA’s should be included.</p>
+<p>Substitute krats with cars, species with class, date with year. The
+question becomes, how many cars of each class are produced per year?
+```{r} set.seed(1) cars_per_y &lt;- mpg %&gt;% filter(class %in%
+sample(class, 4, replace=F)) %&gt;% group_by(class, year) %&gt;%
+summarize(n=n()) %&gt;% group_by(class)</p>
+<p>cars_per_y %&gt;% ggplot(aes(x = class, y = n))+
+geom_boxplot(outlier.shape = NA)+ geom_jitter(width = 0.2, alpha=0.2)+
+theme_classic()+ ylab(“Cars per year”)+ xlab(“Class”)</p>
+<p># this is only giving us 3 classes even though we asked for 4,
+why?</p>
+<p># Because it is sampling from the column “class” which has many of
+the same class. # Therefore, we need to specify that we want to sample
+from within the unique values in “class”.</p>
+<p>cars_per_y &lt;- mpg %&gt;% filter(class %in%
+sample(unique(mpg$class), 4, replace=F)) %&gt;% group_by(class, year)
+%&gt;% summarize(n=n()) %&gt;% group_by(class)</p>
+<p>cars_per_y %&gt;% ggplot(aes(x = class, y = n))+
+geom_boxplot(outlier.shape = NA)+ geom_jitter(width = 0.2, alpha=0.2)+
+theme_classic()+ ylab(“Cars per year”)+ xlab(“Class”) ```</p>
 </div>
 </div>
 </div>
 </div>
+</section><section><h2 class="section-heading" id="using-your-own-data-by-creating-a-minimal-subset">Using your own data by creating a minimal subset<a class="anchor" aria-label="anchor" href="#using-your-own-data-by-creating-a-minimal-subset"></a>
+</h2>
+<hr class="half-width">
+<p>Perhaps you are now thinking that if you can use a subset of an
+existing dataset, wouldn’t it be easier to just subset my own data to
+make it minimal? You are not wrong. There are cases when you can subset
+your own data in the same way you would subset an existing dataset to
+make a minimal dataset, the key is to then make it reproducible. That’s
+when we use the function <code>dput</code>, which essentially takes your
+dataframe and give you code to reproduce it!</p>
+<p>For example, using our previous data2</p>
+<div class="codewrapper sourceCode" id="cb26">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">dput</span><span class="op">(</span><span class="va">cars_per_y</span><span class="op">)</span></span></code></pre>
+</div>
+<p>As you can see, even with our minimal dataset, it is still quite a
+chunk of code. What if you tried putting in krats_per_day? It is clear
+that either way you will still need to considerably minimize your data.
+Even then, it will often be simpler to provide an existing dataset or
+provide one from scratch. Furthermore, often we are able to discover the
+source of our error or solve our own problem when we have to go through
+the process of breaking it down into its essential components!</p>
+<p>Nevertheless, it remains an option for when your data appears too
+complex or you are not quite sure where your error lies and therefore
+are not sure what minimal components are needed to reproduce the
+example.</p>
+<div id="callout5" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Callout</h3>
+<div class="callout-content">
+<p><em>What about NAs?</em> If your data has NAs and they may be causing
+the problem, it is important to include them in your MR dataset. You can
+find where there are NAs in your dataset by using <code>is.na</code>,
+for example: <code>is.na(krats$weight)</code>. This will return a
+logical vector or TRUE if the cell contains an NA and FALSE if not. The
+simplest way to include NAs in your dummy dataset is to directly include
+it in vectors: <code>x &lt;- c(1,2,3,NA)</code>. You can also subset a
+dataset that already contains NAs, or change some of the values to NAs
+using <code>mutate(ifelse())</code> or substitute all the values in a
+column by sampling from within a vector that contains NAs.</p>
+<p>One important thing to note when subsetting a dataset with NAs is
+that subsetting methods that use a condition to match rows won’t
+necessarily match NA values in the way you expect. For example</p>
+<div class="codewrapper sourceCode" id="cb27">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span>x <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="cn">NA</span>, <span class="cn">NA</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">test</span> <span class="op">%&gt;%</span> <span class="fu">filter</span><span class="op">(</span><span class="va">x</span> <span class="op">!=</span> <span class="fl">3</span><span class="op">)</span> </span>
+<span><span class="co"># you might expect that the NA values would be included, since “NA is not equal to 3”. But actually, the expression NA != 3 evaluates to NA, not TRUE. So the NA rows will be dropped!</span></span>
+<span><span class="co"># Instead you should use is.na() to match NAs</span></span>
+<span><span class="va">test</span> <span class="op">%&gt;%</span> <span class="fu">filter</span><span class="op">(</span><span class="va">x</span> <span class="op">!=</span> <span class="fl">3</span> <span class="op">|</span> <span class="fu">is.na</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>Here are some more practice exercises if you wish to test your
+knowledge</p>
+<p><strong>(I copied these from excercise 6 in the google doc… but I’m
+not sure that they are getting at the point of the lesson…) :::
+challenge </strong>Excercise:** Each of the following examples needs
+your help to create a dataset that will correctly reproduce the given
+result and/or warning message when the code is run. Fix the dataset
+shown or fill in the blanks so it reproduces the problem. A) set.seed(1)
+sample_data &lt;- data.frame(fruit = rep(c(“apple”, “banana”), 6),
+weight = rnorm(12)) ggplot(sample_data, aes(x = fruit, y = weight)) +
+geom_boxplot() <strong>HELP: how do I insert an image from clipboard??
+Is it even possible?</strong></p>
+<ol start="2" style="list-style-type: upper-alpha">
+<li><p>bodyweight &lt;- c(12, 13, 14, <strong>, </strong>)
+max(bodyweight) [1] NA</p></li>
+<li><p>sample_data &lt;- data.frame(x = 1:3, y = 4:6)
+mean(sample_data<span class="math inline">\(x)
+[1] NA
+Warning message:
+In mean.default(sample_data\)</span>x): argument is not numeric or
+logical: returning NA</p></li>
+<li><p>sample_data &lt;- ____ dim(sample_data) NULL :::<br>
+::: solution</p></li>
+<li><p>“fruit” needs to be a factor and the order of the levels must be
+specified:
+<code>sample_data &lt;- data.frame(fruit = factor(rep(c("apple", "banana"), 6), levels = c("banana",          "apple")), weight = rnorm(12))</code></p></li>
+<li><p>one of the blanks must be an NA</p></li>
+<li><p><strong>?? + what’s really the point of this
+one?</strong></p></li>
+<li><p><code>sample_data &lt;- data.frame(x = factor(1:3), y = 4:6)</code>
+:::</p></li>
+</ol>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -1160,9 +1498,11 @@ Some NA’s should be included.</p>
 <h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul>
-<li>A minimal reproducible dataset contains the minimum number of lines
-and variables to reproduce a certain problem and can be fully reproduced
-by someone else using only the information provided</li>
+<li>A minimal reproducible dataset contains (a) the minimum number of
+lines, variables, and categories, in the correct format, to reproduce a
+certain problem; and (b) it must be fully reproducible, meaning that
+someone else can reproduce the same problem using only the information
+provided.</li>
 <li>You can create a dataset from scratch using
 <code>as.data.frame</code>, you can use available datasets like
 <code>iris</code> or you can use a subset of your own dataset</li>
@@ -1175,7 +1515,6 @@ by someone else using only the information provided</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</div>
 </section></section><section id="aio-5-minimal-reproducible-code"><p>Content from <a href="5-minimal-reproducible-code.html">Minimal Reproducible Code</a></p>
 <hr>
 <p>Last updated on 2024-08-12 |
@@ -1307,8 +1646,8 @@ reproducible examples.</li>
   "url": "https://kaijagahm.github.io/R-help-reprexes/aio.html",
   "identifier": "https://kaijagahm.github.io/R-help-reprexes/aio.html",
   "dateCreated": "2024-05-14",
-  "dateModified": "2024-09-24",
-  "datePublished": "2024-09-24"
+  "dateModified": "2024-09-25",
+  "datePublished": "2024-09-25"
 }
 
   </script><script>
